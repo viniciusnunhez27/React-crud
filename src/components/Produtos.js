@@ -13,31 +13,31 @@ class Produtos extends React.Component {
     }
   }
   
+
+
+    
+
+
 buscarProduto = () => {
   fetch ("http://localhost:3000/products")
   .then(response => response.json())
-  .then(data => {this.setState({produtos : data})
+  .then(data => {this.setState({ produtos : data})
   }) 
 }
 
-
-
-
 deletarProduto = (id) => {
-   fetch("http://localhost:3000/products" + id, {method: "DELETE"})
+   fetch(`http://localhost:3000/products/${id}`, {method: "DELETE"})
     .then(response => {
       if(response.ok){
-         this.buscarAluno();
+         this.buscarProduto();
       }
-    })
+   })
 }
 
 componentDidMount = () =>{
   this.buscarProduto ();
 }
   
-  
-
   
 
 
@@ -58,12 +58,9 @@ componentDidMount = () =>{
          <th>{produtos.id}</th>
          <th>{produtos.name}</th>
          <th> {produtos.price}</th> 
-         <th><Button variant="primary">Atualizar</Button> <Button variant="danger" onclick={() => this.deletarProduto(produtos.id)}>Excluir</Button></th>          
+         <th><Button variant="primary">Atualizar</Button> <Button variant="danger" onClick={() => this.deletarProduto(produtos.id)}>Excluir</Button></th>          
        </tr>
-        )}   
-
-      
-       
+        )}  
       </tbody>
     </Table>
      

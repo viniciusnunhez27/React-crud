@@ -1,44 +1,39 @@
 {
-    "products": [
-      {
-        "id": 1,
-        "name": "Camisa",
-        "price": 59.9
-      },
-      {
-        "id": 2,
-        "name": "Calça vermelha",
-        "price": 90
-      },
-      {
-        "id": 3,
-        "name": "Boné aba reta",
-        "price": 29.9
-      },
-      {
-        "name": "bota ",
-        "price": "10",
-        "id": 4
-      },
-      {
-        "name": "teste",
-        "price": "1",
-        "id": 5
-      },
-      {
-        "name": "bombona",
-        "price": "30",
-        "id": 6
-      },
-      {
-        "name": "pneu",
-        "price": "10",
-        "id": 7
-      },
-      {
-        "name": "dsda",
-        "price": "23",
-        "id": 8
-      }
-    ]
-  }
+  "products": [
+    {
+      "id": 1,
+      "name": "Camisa",
+      "price": 59.9
+    },
+    {
+      "id": 2,
+      "name": "Calça vermelha",
+      "price": 90
+    },
+    {
+      "id": 3,
+      "name": "Boné aba reta",
+      "price": 29.9
+    },
+    {
+      "name": "bota ",
+      "price": "10",
+      "id": 4
+    },
+    {
+      "name": "teste",
+      "price": "1",
+      "id": 5
+    },
+    {
+      "name": "bombona",
+      "price": "30",
+      "id": 6
+    },
+    {
+      "name": "pneu",
+      "price": "10",
+      "id": 7
+    }
+  ]
+}
