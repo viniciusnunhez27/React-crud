@@ -9,7 +9,9 @@ class Produtos extends React.Component {
       super (props);
 
       this.state = {
-        produtos: []
+        nome: "",
+        preco: "",
+        produtos: [],
     }
   }
 
@@ -29,6 +31,21 @@ buscarProduto = () => {
   }) 
 }
 
+cadastrarProduto = (produto) => {
+  fetch("http://localhost:3000/products/",{
+  method: "POST",
+  headers: {'Content-Type' : 'application/json'},
+  body: JSON.stringify(produto)
+}) 
+  .then(response => {
+    if(response.ok){
+       this.buscarProduto(produto);
+    } else {
+      alert ("Não foi possivel cadastrar o produto")
+    }
+ })
+}
+
 
 deletarProduto = (id) => {
    fetch(`http://localhost:3000/products/${id}`, {method: "DELETE"})
@@ -39,24 +56,50 @@ deletarProduto = (id) => {
    })
 }
 
+atualizaNome = (e) => {
+  this.setState(
+    {
+    nome: e.target.value
+  }
+ )
+}
+
+atualizaPreco = (e) => {
+  this.setState(
+    {
+    preco: e.target.value
+  }
+ )
+}
+
+submit = () => { 
+  const produto = {
+     id: 0,
+     nome: this.state.nome,
+     preco: this.state.preco
+  }
+   this.cadastrarProduto(produto);
+
+}
+
   render () {
      return (  
        <>
           <Form>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
+      <Form.Group className="mb-3" controlId="formBasic">
         <Form.Label>Nome do produto</Form.Label>
-        <Form.Control type="text" placeholder="Informe o nome do produto" />
+        <Form.Control type="text" placeholder="Informe o nome do produto" value={this.state.nome} onChange={this.atualizaNome}/>
         <Form.Text className="text-muted">
         </Form.Text>
       </Form.Group>
     
-      <Form.Group className="mb-3" controlId="formBasicPassword">
+      <Form.Group className="mb-3" controlId="formBasic">
         <Form.Label>Preço </Form.Label>
-        <Form.Control type="text" placeholder="Informe nome do produto" />
+        <Form.Control type="text" placeholder="Informe nome do produto" value={this.state.preco} onChange={this.atualizaPreco} />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
       </Form.Group>
-      <Button variant="primary" type="submit">
+      <Button variant="primary" type="submit" onClick={this.submit}>
           Salvar 
       </Button>
     </Form>   
@@ -82,6 +125,9 @@ deletarProduto = (id) => {
       }  
       </tbody>
     </Table>
+
+
+
     </> 
    
      )
